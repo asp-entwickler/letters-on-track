@@ -126,7 +126,7 @@
       checkFreeSpace: function() {
         let startSpaceFree = false;
         for (let i = 0; i < this.componentsSet.length; i++) {
-          if ( this.componentsSet[i].getLetterSpeed() === 0 && !this.noSpaceModalHasBeenShownFlag ) {
+          if ( parseInt(this.componentsSet[i].getLetterSpeed()) === 0 && !this.noSpaceModalHasBeenShownFlag ) {
             this.showNoSpaceModal = true;
             this.noSpaceModalHasBeenShownFlag = true;
             return false;
