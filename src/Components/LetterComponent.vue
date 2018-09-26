@@ -43,7 +43,6 @@
 
         setLetterSpeed: function(speedParam) {
           this.letterSpeed = speedParam;
-          let that = this;
         },
 
         setGoingRightFlag: function(directionflag) {

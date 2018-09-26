@@ -12,7 +12,7 @@
     <div id=leftWrapper>
       <label>Letter</label>
       <br />
-      <input type="text" id="LetterStarterPad" onkeydown="return /[a-z]/i.test(event.key)" title="one letter only" maxlength="1" size="1" />
+      <input type="text" id="LetterStarterPad" title="one letter only" maxlength="1" size="1" />
       <br />
       <input type="button" id="goBtn" v-on:click="goBtnCkicked"  class="btn" value="GO!" />
     </div>
@@ -109,11 +109,10 @@
           if (this.componentsSet.length == 0) {
             this.mountLetterComponent(letterValue, cSpeed);
           } else {
-            let that = this;
-            let intervalID = setInterval(function() {
-              let isStartSpaceFree = that.checkFreeSpace();
+            let intervalID = setInterval( () => {
+              let isStartSpaceFree = this.checkFreeSpace();
               if (isStartSpaceFree) {
-                that.mountLetterComponent(letterValue, cSpeed);
+                this.mountLetterComponent(letterValue, cSpeed);
                 clearInterval(intervalID);
               }
             }, 300);
@@ -144,10 +143,9 @@
 
       runLetterMover: function() {
 
-        let that = this;
-          that.intervalId = setInterval(function() {
-            that.letterMover();
-          }, 10);
+        this.intervalId = setInterval(() => {
+          this.letterMover();
+        }, 10);
 
       },
 
@@ -253,7 +251,6 @@
       },
 
       checkBounces: function(comp) {
-        var that = this;
 
         if (comp.getGoingRightFlag()) {
           this.checkRightSideBounced(comp);
